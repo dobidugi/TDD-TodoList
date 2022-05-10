@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import classes from "./TodoForm.module.css";
 function TodoForm(props) {
     const [value, setValue] = useState("");
     const onChange = (event) => {
@@ -12,14 +12,19 @@ function TodoForm(props) {
         setValue("");
     };
     return (
-        <form onSubmit={onSubmit}>
-            <input 
+        <form onSubmit={onSubmit} className={classes.form}>
+            <input
+                className={classes.input}
                 type="text" 
                 placeholder="할 일을 입력하세요." 
                 value={value}
                 onChange={onChange}
             />
-            <button type="submit">{`등록`}</button>
+            <button 
+                className={classes.button}
+                type="submit">
+                {`등록`}
+            </button>
         </form>
     );
 }
