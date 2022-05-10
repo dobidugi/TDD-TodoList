@@ -5,6 +5,10 @@ function App() {
     const onInsert = (value) => {
         
     };
+
+    const onToggle = (id) => {
+        
+    };
     return (
         <div>
             <TodoForm onInsert={onInsert}/>
