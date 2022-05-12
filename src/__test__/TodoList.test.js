@@ -26,7 +26,7 @@ describe("<TodoList />", () => {
         const utils = render(<TodoList {...props} todos={MockTodos} />);
         return {
             ...utils
-        }
+        };
     };
 
     it("todo items render", ()=> {
@@ -38,14 +38,14 @@ describe("<TodoList />", () => {
 
     it("calls onRemove", () => {
         const onRemove = jest.fn();
-        const { getAllByText } = setup({ onRemove});
+        const { getAllByText } = setup({ onRemove });
         fireEvent.click(getAllByText("삭제")[0]);
         expect(onRemove).toBeCalledWith(MockTodos[0].id);
     });
 
     it("calls onToggle", () => {
         const onToggle = jest.fn();
-        const { getAllByText, getByText} = setup({ onToggle });
+        const { getAllByText, getByText } = setup({ onToggle });
         fireEvent.click(getByText(MockTodos[0].text));
         expect(onToggle).toBeCalledWith(MockTodos[0].id);
     });
