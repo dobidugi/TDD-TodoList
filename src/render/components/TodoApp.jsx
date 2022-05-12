@@ -28,10 +28,10 @@ function TodoApp() {
     const onToggle = (id) => {
         const newTodos = todos.map(todo => {
             if(todo.id === id) {
-                return {...todo, done: !todo.done}
+                return { ...todo, done: !todo.done };
             }
             else return todo;
-        })
+        });
         setTodos(newTodos);
     };
 
