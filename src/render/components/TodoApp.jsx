@@ -22,7 +22,7 @@ const INIT_TODOS = [
 function TodoApp() {
     const [todos, setTodos] = useState(INIT_TODOS);
     const onInsert = (value) => {
-        setTodos((prevTodos) => prevTodos.concat( { id: prevTodos.length, text: value, done: false } ));
+        setTodos((prevTodos) => prevTodos.concat( { id: prevTodos.length+1, text: value, done: false } ));
     };
 
     const onToggle = (id) => {
@@ -36,12 +36,12 @@ function TodoApp() {
     };
 
     const onRemove = (id) => {
-        
+        setTodos((prevTodos) => prevTodos.filter(todo => todo.id !== id));
     };
     return (
         <React.Fragment>
             <TodoForm onInsert={onInsert}/>
-            <TodoList todos={todos} onToggle={onToggle}/>
+            <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove}/>
         </React.Fragment>
     );
 }

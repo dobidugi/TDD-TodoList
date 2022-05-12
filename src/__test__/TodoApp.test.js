@@ -1,6 +1,6 @@
 import { fireEvent, render } from "@testing-library/react";
 import React from "react";
-import '@testing-library/jest-dom'
+import "@testing-library/jest-dom";
 import TodoApp from "../render/components/TodoApp";
 
 describe("<TodoApp />", ()=> {
@@ -11,9 +11,9 @@ describe("<TodoApp />", ()=> {
         return {
             ...utils,
             button,
-            input
-        }
-    }
+            input,
+        };
+    };
     it("is render TodoForm and TodoList", ()=> {
         const { getByText, getAllByText } = setup();
         getByText("등록");
@@ -27,7 +27,7 @@ describe("<TodoApp />", ()=> {
             target: {
                 value: newTodo
             }
-        })
+        });
         fireEvent.click(button);
         getByText(newTodo);
     });
@@ -39,12 +39,26 @@ describe("<TodoApp />", ()=> {
             target: {
                 value: newTodo
             }
-        })
+        });
         fireEvent.click(button);
         const todoText = getByText(newTodo);
-        expect(todoText).not.toHaveStyle('text-decoration: line-through;'); 
+        expect(todoText).not.toHaveStyle("text-decoration: line-through;"); 
         fireEvent.click(todoText);
-        expect(todoText).toHaveStyle('text-decoration: line-through;');
+        expect(todoText).toHaveStyle("text-decoration: line-through;");
         
+    });
+
+    it("remove todo", () => {
+        const { input, getByText, button } = setup();
+        const newTodo = "새로운일 추가하기";
+        fireEvent.change(input, {
+            target: {
+                value: newTodo
+            }
+        });
+        fireEvent.click(button);
+        const todoText = getByText(newTodo);
+        fireEvent.click(todoText.nextSibling);
+        expect(todoText).not.toBeInTheDocument();
     });
 });
