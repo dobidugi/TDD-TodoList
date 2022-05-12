@@ -11,10 +11,10 @@ describe("<TodoItem />", () => {
     };
 
     const setup = (props={}) => {
-        const initialProps = { todo: MockTodoItem }
+        const initialProps = { todo: MockTodoItem };
         const utils = render(<TodoItem { ...initialProps } {...props} />);
         const todo = props.todo || initialProps.todo;
-        const {getByText} = utils;
+        const { getByText } = utils;
         const text = getByText(todo.text);
         const button = getByText("삭제");
         return {
@@ -26,20 +26,20 @@ describe("<TodoItem />", () => {
     };
 
     it("has span and button",() => {
-        const {text, button} = setup();
+        const { text, button } = setup();
         expect(text).toBeTruthy();
         expect(button).toBeTruthy();
     });
 
     it("show line-throuh on text when done true", () => {
         const { text } = setup( { todo:  { ...MockTodoItem, done: true } } );
-        expect(text).toHaveStyle("text-decoration: line-through")
+        expect(text).toHaveStyle("text-decoration: line-through");
     });
 
     it("does`nt not show line-throuh on text when done false", () => {
         const { text } = setup( { todo:  { ...MockTodoItem, done: false } } );
-        expect(text).toHaveStyle("text-decoration: ")
-    })
+        expect(text).toHaveStyle("text-decoration: ");
+    });
 
     it("calls onToggle", ()=> {
         const onToggle = jest.fn();

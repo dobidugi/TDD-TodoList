@@ -47,7 +47,7 @@ describe("<TodoForm /> test", () => {
         const onInsert = jest.fn();
         const changeValue = "TDD 익히기";
 
-        const { input, button } = setup( { onInsert })
+        const { input, button } = setup( { onInsert });
         fireEvent.change(input, {
             target: {
                 value: changeValue
