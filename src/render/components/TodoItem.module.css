@@ -1,0 +1,18 @@
+.item {
+    display: flex;
+    width: 100%;
+    min-height: 0;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    border-bottom: solid 1px gainsboro;
+    padding: 1rem 0;
+}
+
+.button {
+    color: white;
+    background-color: red;
+    padding: 0 0.2rem;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin-left: 1rem;
+}

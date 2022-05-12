@@ -1,7 +1,25 @@
+import TodoList from "./components/TodoList";
 import React from "react";
 import TodoForm from "./components/TodoForm";
 
 function App() {
+    const Todos = [
+        {
+            id:1,
+            text: "숨쉬기",
+            done: false
+        },
+        {
+            id:2,
+            text: "개발",
+            done: false
+        },
+        {
+            id:3,
+            text: "잠자기",
+            done: true
+        },
+    ];
     const onInsert = (value) => {
         
     };
@@ -10,9 +28,10 @@ function App() {
         
     };
     return (
-        <div>
+        <React.Fragment>
             <TodoForm onInsert={onInsert}/>
-        </div>
+            <TodoList todos={Todos}/>
+        </React.Fragment>
     );
 }
 
