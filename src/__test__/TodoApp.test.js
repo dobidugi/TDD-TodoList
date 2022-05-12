@@ -1,5 +1,6 @@
-import { fireEvent, getByPlaceholderText, getByText, render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import React from "react";
+import '@testing-library/jest-dom'
 import TodoApp from "../render/components/TodoApp";
 
 describe("<TodoApp />", ()=> {
@@ -24,10 +25,26 @@ describe("<TodoApp />", ()=> {
         const newTodo = "새로운일 추가하기";
         fireEvent.change(input, {
             target: {
-                value: "새로운일 추가하기"
+                value: newTodo
             }
         })
         fireEvent.click(button);
         getByText(newTodo);
+    });
+
+    it("toggle todo", ()=> {
+        const { button , input, getByText } = setup();
+        const newTodo = "새로운일 추가하기";
+        fireEvent.change(input, {
+            target: {
+                value: newTodo
+            }
+        })
+        fireEvent.click(button);
+        const todoText = getByText(newTodo);
+        expect(todoText).not.toHaveStyle('text-decoration: line-through;'); 
+        fireEvent.click(todoText);
+        expect(todoText).toHaveStyle('text-decoration: line-through;');
+        
     });
 });

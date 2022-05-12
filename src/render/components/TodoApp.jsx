@@ -26,7 +26,13 @@ function TodoApp() {
     };
 
     const onToggle = (id) => {
-        
+        const newTodos = todos.map(todo => {
+            if(todo.id === id) {
+                return {...todo, done: !todo.done}
+            }
+            else return todo;
+        })
+        setTodos(newTodos);
     };
 
     const onRemove = (id) => {
@@ -35,7 +41,7 @@ function TodoApp() {
     return (
         <React.Fragment>
             <TodoForm onInsert={onInsert}/>
-            <TodoList todos={todos}/>
+            <TodoList todos={todos} onToggle={onToggle}/>
         </React.Fragment>
     );
 }
