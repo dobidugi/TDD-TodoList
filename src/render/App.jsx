@@ -27,6 +27,10 @@ function App() {
     const onToggle = (id) => {
         
     };
+
+    const onRemove = (id) => {
+        
+    };
     return (
         <React.Fragment>
             <TodoForm onInsert={onInsert}/>

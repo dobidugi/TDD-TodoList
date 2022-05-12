@@ -2,10 +2,10 @@ import React from "react";
 import TodoItem from "./TodoItem";
 import classes from "./TodoList.module.css";
 function TodoList(props) {
-    const { todos } = props;
+    const { todos, onRemove, onToggle } = props;
     return (
-        <ul className={classes.list}>
-            {todos.map(todo => <TodoItem key={todo.id} todo={todo} />)}
+        <ul>
+            {todos.map(todo => <TodoItem key={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle} />)}
         </ul>
     );
 }
